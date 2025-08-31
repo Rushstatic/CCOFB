@@ -1,0 +1,32 @@
+.Navbar{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background-color: #121212;
+    padding: 1rem;
+    border-radius: 80px;
+    top: 50px;
+    right: 40%;
+    z-index: 1000;
+    position: fixed;
+    width: 500px;
+}
+
+
+.Nav-item{
+    position: relative;
+    color: #aaa;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 40px;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    width: 100px;
+    transition: transfrom 0.3s ease, bos-shadow 0.3s ease color 0.3s ease;
+    
+}
+
+.Nav-item:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: fff;
+}
