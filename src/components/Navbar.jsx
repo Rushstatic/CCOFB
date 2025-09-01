@@ -1,23 +1,23 @@
+import { useState } from 'react';
 import './Navbar.css';
 
-function Navbar() {
-  const navItems = ['Home', 'Docs', 'Items'];
-  const active = 'Home';
+export default function Navbar() {
+  const items = ['Home', 'Docs', 'Items'];
+  const [active, setActive] = useState('Home');
 
   return (
-    <a className="Navbar" href="#"> 
-      {navItems.map(item => (
-        <div
+    <nav className="navbar">
+      {items.map(item => (
+        <button
           key={item}
-          className={`Nav-item ${item === active ? 'active' : ''}`}
+          className={`nav-item ${item === active ? 'active' : ''}`}
           onClick={() => setActive(item)}
         >
-          {item === active && <span className='dot' />}
+          {item === active && <span className="dot" />}
           {item}
-        </div>
+        </button>
       ))}
-    </a>
+    </nav>
   );
 }
 
-export default Navbar;

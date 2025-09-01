@@ -1,32 +1,38 @@
-.Navbar{
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    background-color: #121212;
-    padding: 1rem;
-    border-radius: 80px;
-    top: 50px;
-    right: 40%;
-    z-index: 1000;
-    position: fixed;
-    width: 500px;
+:root { --nav-h: 80px; }
+
+.navbar {
+  position: fixed;
+  top: 0; left: 10px;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  background: #000;
+  border-radius: 40px;
+  width: max-content;
+  z-index: 10;
 }
 
-
-.Nav-item{
-    position: relative;
-    color: #aaa;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 40px;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    width: 100px;
-    transition: transfrom 0.3s ease, bos-shadow 0.3s ease color 0.3s ease;
-    
+.nav-item {
+  position: relative;
+  color: #aaa;
+  font: 600 1rem/1 'Segoe UI', system-ui, sans-serif;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform .2s ease, color .2s ease;
 }
 
-.Nav-item:hover{
-    transform: translateY(-4px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    color: fff;
+.nav-item:hover { transform: translateY(-2px); color: #fff; }
+
+.nav-item.active { color: #fff; }
+
+.nav-item .dot {
+  position: absolute;
+  left: 6px; top: 50%;
+  transform: translateY(-50%);
+  width: 6px; height: 6px; border-radius: 999px; background: #fff;
 }
