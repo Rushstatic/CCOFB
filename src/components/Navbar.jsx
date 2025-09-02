@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './Navbar.css';
 
 export default function Navbar() {
-  const items = ['Home', 'Docs', 'Items'];
+  const items = [' Home', ' Docs', ' Items'];
   const [active, setActive] = useState('Home');
 
   return (
