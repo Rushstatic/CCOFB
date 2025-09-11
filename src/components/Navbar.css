@@ -9,6 +9,19 @@
   --nav-dot: #7f5af0;
 }
 
+
+/* Dark Theme */
+.dark-mode {
+  --nav-bg-start: #0b111a;
+  --nav-bg-end: #141e2b;
+  --nav-text: #cfeee6;
+  --nav-text-hover: #ffffff;
+  --nav-accent: #4ec9b0;
+  --nav-hover: #3aa98f;
+  --nav-dot: #4ec9b0;
+}
+
+
 .navbar {
   position: fixed;
   top: 30px;
@@ -23,6 +36,7 @@
   box-shadow: 0 8px 24px rgba(127, 90, 240, 0.1);
   z-index: 10;
   webkit-backdrop-filter: blur(12px);
+  transition: background 0.4s ease, color 0.4s ease;
   border: 1px solid rgba(127, 90, 240, 1.0);
 }
 
@@ -36,6 +50,8 @@
   background: transparent;
   cursor: pointer;
   transition: transform 0.2s ease, color 0.2s ease;
+  transition: background 0.4s ease, color 0.4s ease;
+
 }
 
 .nav-item:hover {
@@ -56,4 +72,14 @@
   height: 6px;
   border-radius: 999px;
   background: var(--nav-dot);
+}
+
+.dark-mode .navbar {
+  box-shadow: 0 8px 24px rgba(78, 201, 176, 0.2);
+  border: 1px solid var(--nav-accent);
+}
+
+.nav-item:hover .dot {
+  transform: translateY(-50%) scale(1.2);
+  transition: transform 0.2s ease;
 }

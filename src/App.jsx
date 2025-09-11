@@ -1,4 +1,4 @@
-
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Items from './components/items';
 import ParticlesBackground from './components/ParticlesBackground';
@@ -9,14 +9,25 @@ import Showcase from './pages/Showcase';
 import Home from './pages/Home.jsx';
 import Docs from './pages/Docs.jsx';
 
+function App() {
+  const [isDark, setIsDark] = useState(false);
 
-function MainContent() {
+  useEffect(() => {
+    document.body.classList.toggle('dark-mode', isDark);
+  }, [isDark]);
+
   return (
     <div className="App">
-      {/* 1) Background at z-index 0 */}
+      {/* Theme Toggle Button */}
+      <button onClick={() => setIsDark(prev => !prev)} className="theme-toggle">
+        {isDark ? '🌙 Dark Mode' : '☀️ Light Mode'}
+      </button>
+
+      {/* Background */}
       <div className="background-layer" />
-<ParticlesBackground />
-      {/* 2) Orb at z-index 1 */}
+      <ParticlesBackground />
+
+      {/* Orb */}
       <div className="orb-layer">
         <Orb
           hoverIntensity={0.5}
@@ -26,10 +37,10 @@ function MainContent() {
         />
       </div>
 
-      {/* ✅ 3) Fixed Navbar — separate from animated content */}
+      {/* Navbar */}
       <Navbar className="navi" />
 
-      {/* 4) Foreground Content */}
+      {/* Foreground Content */}
       <div className="foreground">
         <Routes>
           <Route path="/" element={<Items />} />
@@ -41,9 +52,6 @@ function MainContent() {
   );
 }
 
-
-export default function App() {
-  return <MainContent />;
-}
+export default App;
 
 

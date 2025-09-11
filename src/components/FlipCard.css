@@ -14,6 +14,14 @@
   --tiltX: 0deg;
   --tiltY: 0deg;
 }
+.dark-mode {
+  --card-bg: #141e2b;
+  --card-back: #1f2f3a;
+  --text-primary: #cfeee6;
+  --accent: linear-gradient(45deg, #4ec9b0, #0077b6);
+  --accent-hover: #005f8e;
+}
+
 
 .team-section {
   display: flex;
@@ -66,13 +74,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #fff;
+background: var(--card-bg);
+  color: var(--text-primary);
+  
 }
 
 /* Back face is rotated so it shows when flipped */
 .flip-card-back {
   transform: rotateY(180deg);
-  background: #f0f4f8;
+  background: var(--card-back);
 }
 
 
