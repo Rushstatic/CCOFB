@@ -7,7 +7,7 @@ import RotatingText from "./Parts/RotatingText";
 export default function Items() {
   // 1. Define your rotating phrases
   const phrases = [
-    "Hello Fake Buster"
+    "Hello User"
   ];
 
   // 2. Rotation settings
@@ -31,21 +31,26 @@ export default function Items() {
     typingSpeed
   );
 
+  // 6. Animate the tagline
+const taglineText =
+  "Navigate the social media world with confidence by uncovering fake profiles and bots before you engage.";
+
+const animatedTagline = useTypewriter(taglineText, 30); // slower speed for elegance
+
+
   return (
     <div className="heroText">
-      <span className="badge">New
+      <span className="badge">Fake-Buster
         </span>
 
       <div className="heading1">
         <h1 className="typewriter">{heading}</h1>
       </div>
 
-      <p className="tagline">
-        <span className="subtagline">
-          Navigate the social media world with confidence by uncovering fake
-          profiles and bots before you engage.
-        </span>
-      </p>
+<p className="tagline">
+  <span className="subtagline">{animatedTagline}</span>
+</p>
+
 
       <button
         className="cta"

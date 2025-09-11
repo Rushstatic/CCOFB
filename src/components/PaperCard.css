@@ -1,0 +1,55 @@
+/* PaperCard.css */
+.paper-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  -webkit--backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.paper-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.author {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.abstract {
+  font-size: 0.95rem;
+  margin: 1rem 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.read-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #00f0ff;
+  color: black;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}

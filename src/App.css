@@ -1,61 +1,141 @@
-/* 1) Reset & root sizing */
+/* 1) Reset & Root Sizing */
 html, body, #root {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
+  font-family: "Inter", "Poppins", "DM Sans", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.6s ease, color 0.6s ease;
+  overflow-x: hidden;
 }
 
-/* 2) Create a single stacking context on .App */
+/* 2) App Container with Depth */
 .App {
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInScene 1s ease-out forwards;
+  perspective: 1200px;
 }
 
-/* 3) Background layer (at the very back) */
+/* 3) Background Layer — Animated Gradient */
 .background-layer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-
-  /* Deep black-blue radial gradient */
-  background: radial-gradient(
-    circle at center,
-    #0b0f1a 0%,
-    #080c14 100%
-  );
-
+  background: radial-gradient(circle at center, #f5f7fa 0%, #e3edf7 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite, backgroundReveal 1.2s ease-out forwards;
   z-index: 0;
+  opacity: 0.95;
 }
 
-/* 4) Orb layer (middle) */
-/* Before: 300px x 300px */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes starDrift {
+  from { background-position: 0 0; }
+  to { background-position: -1000px 1000px; }
+}
+
+#tsparticles canvas {
+  filter: drop-shadow(0 0 6px rgba(127, 90, 240, 0.4));
+}
+
+
+/* 4) Orb Layer — Glowing, Floating, Reactive */
 .orb-layer {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 800px;       /* ↑ increased */
-  height: 800px;      /* ↑ increased */
+  width: 800px;
+  height: 800px;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
+  background: radial-gradient(circle, rgba(127, 90, 240, 0.3) 0%, transparent 70%);
+  filter: blur(40px);
+  opacity: 0.75;
+  animation: orbPulse 4s ease-in-out infinite, orbFloat 12s ease-in-out infinite;
 }
 
-/* 5) Foreground content (top) */
+@keyframes orbFloat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -52%) scale(1.05); }
+}
+
+/* 5) Foreground Content — Lifted, Staggered */
 .foreground {
   position: relative;
   z-index: 2;
-  /* Optional centering or padding */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
   gap: 1.5rem;
+  animation: contentLift 0.6s ease-out forwards;
+  transform-style: preserve-3d;
 }
 
+.foreground > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.foreground > *:nth-child(1) { animation-delay: 0.2s; }
+.foreground > *:nth-child(2) { animation-delay: 0.4s; }
+.foreground > *:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✨ Scene Animations */
+@keyframes fadeInScene {
+  0% { opacity: 0; transform: scale(0.98); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes backgroundReveal {
+  0% { opacity: 0; }
+  100% { opacity: 0.9; }
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.03); }
+}
+
+@keyframes contentLift {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.navi{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Above orb and background */
+  background: rgba(0, 0, 0, 0.6); /* Optional frosted-glass effect */
+  -webkit--backdrop-filter: blur(10px);
+  transition: background 0.3s ease;
+
+}

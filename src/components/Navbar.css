@@ -1,40 +1,59 @@
-:root { --nav-h: 80px; }
+:root {
+  --nav-h: 80px;
+  --nav-bg-start: #f5f7fa;
+  --nav-bg-end: #e3edf7;
+  --nav-accent: #7f5af0;
+  --nav-hover: #6246ea;
+  --nav-text: #475569;
+  --nav-text-hover: #1e293b;
+  --nav-dot: #7f5af0;
+}
 
 .navbar {
   position: fixed;
-  top: 30px; left: 20px;
-  height: 80px;
+  top: 30px;
+  left: 20px;
+  height: var(--nav-h);
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 0 1rem;
-  background-color: #124170;
-  background: linear-gradient(90deg, #26667F, #3E5F44);
+  background: linear-gradient(90deg, var(--nav-bg-start), var(--nav-bg-end));
   border-radius: 40px;
-  width: 380px;
+  box-shadow: 0 8px 24px rgba(127, 90, 240, 0.1);
   z-index: 10;
+  webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(127, 90, 240, 1.0);
 }
 
 .nav-item {
   position: relative;
-  color: #aaa;
-  font: 600 1rem/1 'Segoe UI', system-ui, sans-serif;
-  font-size: 30px;
+  color: var(--nav-text);
+  font: 600 1rem/1 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.4rem;
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  border: 0;
   background: transparent;
   cursor: pointer;
-  transition: transform .2s ease, color .2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.nav-item:hover { transform: translateY(-2px); color: #fff; }
+.nav-item:hover {
+  transform: translateY(-2px);
+  color: var(--nav-hover);
+}
 
-.nav-item.active { color: #fff; }
+.nav-item.active {
+  color: var(--nav-accent);
+}
 
 .nav-item .dot {
   position: absolute;
-  left: 6px; top: 50%;
+  left: 6px;
+  top: 50%;
   transform: translateY(-50%);
-  width: 6px; height: 6px; border-radius: 999px; background: #fff;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--nav-dot);
 }

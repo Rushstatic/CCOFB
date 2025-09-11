@@ -1,0 +1,140 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --card-w: 260px;
+  --card-h: 360px;
+  --radius: 16px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --accent: linear-gradient(45deg, #4ec9a7, #0077b6);
+  --accent-hover: #005f8e;
+  --bg-color: #fff;
+  --text-primary: #1a2b3c;
+  --transition: 0.4s ease;
+  --flipDeg: 0deg;
+  --tiltX: 0deg;
+  --tiltY: 0deg;
+}
+
+.team-section {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  flex-wrap: wrap;
+}
+
+.flip-card {
+  perspective: 1200px;
+  width: 260px;
+  height: 360px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+/* Flip on hover */
+.flip-card:hover .flip-card-inner {
+  animation: flipOnce 0.9s ease forwards;
+}
+@keyframes flipOnce {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+/* Back face is rotated so it shows when flipped */
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: #f0f4f8;
+}
+
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.flip-card-front h3 {
+  margin: 1rem 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.social-links {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.social-links a {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.connect-btn {
+  margin-top: auto;
+  margin-bottom: 2rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.connect-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.college-logo {
+  max-width: 60%;
+  opacity: 0.8;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

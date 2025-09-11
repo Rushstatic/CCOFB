@@ -1,0 +1,54 @@
+/* Docs.css */
+.docs-page {
+  padding: 2rem;
+  text-align: center;
+}
+
+.docs-heading {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.paper-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  scroll-snap-type: x mandatory;
+}
+
+.paper-card {
+  flex: 0 0 auto;
+  width: 280px;
+  scroll-snap-align: start;
+}
+.paper-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.paper-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Change to 3 for 3 cards per row */
+  gap: 1.5rem;
+}
+@media (max-width: 1024px) {
+  .paper-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .paper-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .paper-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
